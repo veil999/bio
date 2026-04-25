@@ -21,18 +21,35 @@ const TelegramIcon = () => (
 );
 
 const socials: SocialLink[] = [
-  { name: "Discord", href: "https://discord.com/users/yourid", icon: <DiscordIcon /> },
+  { name: "Discord", href: "https://discord.com/users/1400936961845362788", icon: <DiscordIcon /> },
   { name: "Telegram", href: "https://t.me/yourhandle", icon: <TelegramIcon /> },
 ];
 
 const TARGET_VOLUME = 0.45;
-const FADE_MS = 300;
+const FADE_MS = 600;
 
-const fadeAudio = (audio: HTMLAudioElement, from: number, to: number, duration: number) => {
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
+
+const fadeAudio = (
+  audio: HTMLAudioElement,
+  from: number,
+  to: number,
+  duration: number,
+  tokenRef: { current: number },
+) => {
+  const myToken = ++tokenRef.current;
   const start = performance.now();
+  const safeFrom = clamp01(from);
+  const safeTo = clamp01(to);
+  try {
+    audio.volume = safeFrom;
+  } catch {}
   const step = (now: number) => {
+    if (myToken !== tokenRef.current) return;
     const t = Math.min(1, (now - start) / duration);
-    audio.volume = from + (to - from) * t;
+    try {
+      audio.volume = clamp01(safeFrom + (safeTo - safeFrom) * t);
+    } catch {}
     if (t < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -42,34 +59,41 @@ const Index = () => {
   const [entered, setEntered] = useState(false);
   const [muted, setMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const fadeTokenRef = useRef(0);
+  const muteTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    document.title = "nerves — bio";
+    document.title = "flaire";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "nerves — biological signals synthesized for a digital void.");
+    if (meta) meta.setAttribute("content", "hi,, :3");
   }, []);
 
   const handleEnter = () => {
     setEntered(true);
     const audio = audioRef.current;
     if (audio) {
-      audio.volume = 0;
-      audio.play().then(() => fadeAudio(audio, 0, TARGET_VOLUME, 1200)).catch(() => {});
+      try { audio.volume = 0; } catch {}
+      audio.play().then(() => fadeAudio(audio, 0, TARGET_VOLUME, 1200, fadeTokenRef)).catch(() => {});
     }
   };
 
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
+    if (muteTimerRef.current !== null) {
+      window.clearTimeout(muteTimerRef.current);
+      muteTimerRef.current = null;
+    }
     if (muted) {
       audio.muted = false;
-      fadeAudio(audio, 0, TARGET_VOLUME, FADE_MS);
+      fadeAudio(audio, 0, TARGET_VOLUME, FADE_MS, fadeTokenRef);
       setMuted(false);
     } else {
       const startVol = audio.volume;
-      fadeAudio(audio, startVol, 0, FADE_MS);
-      setTimeout(() => {
+      fadeAudio(audio, startVol, 0, FADE_MS, fadeTokenRef);
+      muteTimerRef.current = window.setTimeout(() => {
         audio.muted = true;
+        muteTimerRef.current = null;
       }, FADE_MS);
       setMuted(true);
     }
@@ -104,10 +128,10 @@ const Index = () => {
             type="button"
             onClick={handleEnter}
             className="relative z-10 cursor-pointer flex flex-col items-center gap-8 group focus:outline-none"
-            aria-label="Enter nerves"
+            aria-label="Enter flaire"
           >
             <h1 className="font-serif-display text-6xl md:text-8xl text-foreground italic tracking-tighter transition-all duration-700 group-hover:tracking-normal">
-              nerves
+              flaire
             </h1>
             <div className="flex flex-col items-center gap-2">
               <div className="w-px h-12 bg-gradient-to-b from-transparent via-primary to-transparent animate-pulse" />
@@ -128,12 +152,12 @@ const Index = () => {
         <header className="flex flex-col items-center text-center mb-14 animate-fade-in-up">
           <div className="size-24 rounded-full p-[1px] bg-gradient-to-b from-primary/40 via-foreground/10 to-transparent mb-7">
             <div className="size-full rounded-full overflow-hidden bg-card">
-              <img src={avatarImg} alt="nerves avatar" className="size-full object-cover" />
+              <img src={avatarImg} alt="flaire avatar" className="size-full object-cover" />
             </div>
           </div>
 
           <h2 className="font-serif-display text-5xl md:text-6xl text-foreground italic mb-3 tracking-tight">
-            nerves
+            flaire
           </h2>
 
           <p className="font-mono-display text-xs leading-relaxed max-w-[300px] opacity-60 tracking-tight">
