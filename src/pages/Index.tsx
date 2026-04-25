@@ -171,7 +171,7 @@ const Index = () => {
             16
           </span>
 
-          <p className="font-mono-display text-xs leading-relaxed max-w-[300px] opacity-60 tracking-tight">
+          <p className="font-mono-display text-xs leading-relaxed max-w-[310px] opacity-60 tracking-tight">
             "I'm such a fag." — Tank, My Best Friend's Girl
           </p>
         </header>
@@ -205,9 +205,7 @@ const Index = () => {
         {/* Link cards */}
         <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
           {[
-            { tag: "Protocol 01", label: "the collective", href: "#" },
-            { tag: "Protocol 02", label: "encrypted signal", href: "#" },
-            { tag: "Archive", label: "visual synthetics", href: "#" },
+            { tag: "Protocol 01", label: "pegasus.tech", href: "https://pegasuste.ch" },
           ].map((l) => (
             <a
               key={l.label}
