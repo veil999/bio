@@ -27,8 +27,8 @@ const RobloxIcon = () => (
 );
 
 const socials: SocialLink[] = [
-  { name: "Discord 1", href: "https://discord.com/users/1400936961845362788", icon: <DiscordIcon /> },
-  { name: "Discord 2", href: "https://discord.com/users/420526391348428800", icon: <DiscordIcon /> },
+  { name: "Nerves", href: "https://discord.com/users/1400936961845362788", icon: <DiscordIcon /> },
+  { name: "Flaire", href: "https://discord.com/users/420526391348428800", icon: <DiscordIcon /> },
   { name: "Telegram", href: "https://t.me/temp71111111111111111", icon: <TelegramIcon /> },
   { name: "Roblox", href: "https://www.roblox.com/users/4806433456/profile", icon: <RobloxIcon /> },
 ];
