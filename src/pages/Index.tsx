@@ -160,8 +160,12 @@ const Index = () => {
             flaire
           </h2>
 
+          <span className="font-mono-display text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4">
+            16
+          </span>
+
           <p className="font-mono-display text-xs leading-relaxed max-w-[300px] opacity-60 tracking-tight">
-            biological signals synthesized for a digital void. archiving the static between thoughts.
+            "I'm such a fag." — Tank, My Best Friend's Girl
           </p>
         </header>
 
