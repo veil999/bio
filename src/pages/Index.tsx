@@ -20,9 +20,16 @@ const TelegramIcon = () => (
   </svg>
 );
 
+const RobloxIcon = () => (
+  <svg viewBox="0 0 1333.35 1333.35" fill="currentColor" className="size-6" aria-hidden="true">
+    <path d="M272.91 0L0 1060.43l1060.43 272.91L1333.34 272.9 272.91-.01zm316.86 536.5l207 53.25-53.28 207.02-207-53.28 53.28-207z" />
+  </svg>
+);
+
 const socials: SocialLink[] = [
   { name: "Discord", href: "https://discord.com/users/1400936961845362788", icon: <DiscordIcon /> },
   { name: "Telegram", href: "https://t.me/yourhandle", icon: <TelegramIcon /> },
+  { name: "Roblox", href: "https://www.roblox.com/users/4806433456/profile", icon: <RobloxIcon /> },
 ];
 
 const TARGET_VOLUME = 0.45;
