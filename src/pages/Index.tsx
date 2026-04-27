@@ -27,10 +27,9 @@ const RobloxIcon = () => (
 );
 
 const socials: SocialLink[] = [
-  { name: "Nerves", href: "https://discord.com/users/1400936961845362788", icon: <DiscordIcon /> },
-  { name: "Flaire", href: "https://discord.com/users/420526391348428800", icon: <DiscordIcon /> },
-  { name: "Telegram", href: "https://t.me/temp71111111111111111", icon: <TelegramIcon /> },
-  { name: "Roblox", href: "https://www.roblox.com/users/4806433456/profile", icon: <RobloxIcon /> },
+  { name: "discord", href: "https://discord.com/users/420526391348428800", icon: <DiscordIcon /> },
+  { name: "telegram", href: "https://t.me/temp71111111111111111", icon: <TelegramIcon /> },
+  { name: "roblox", href: "https://www.roblox.com/users/4806433456/profile", icon: <RobloxIcon /> },
 ];
 
 const TARGET_VOLUME = 0.45;
@@ -174,6 +173,7 @@ const Index = () => {
 
           <p className="font-mono-display text-xs leading-relaxed max-w-[310px] opacity-60 tracking-tight">
             "I'm such a fag." — Tank, My Best Friend's Girl
+            I love nerves <3 my babyyy
           </p>
         </header>
 
