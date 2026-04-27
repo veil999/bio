@@ -173,6 +173,7 @@ const Index = () => {
 
           <p className="font-mono-display text-xs leading-relaxed max-w-[310px] opacity-60 tracking-tight">
             "I'm such a fag." — Tank, My Best Friend's Girl
+            <br />
             I love nerves ♡ my babyyy
           </p>
         </header>
